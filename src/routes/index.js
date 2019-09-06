@@ -1,12 +1,14 @@
 import express from 'express';
-import registryRouter from './registryRoutes';
+import listRouter from './listRoutes';
 
 const Router = express.Router();
 
 Router.get('/', (req, res) => {
-  res.status(301).redirect('/api');
+  res.status(200).send({
+    message: 'Welcome, add your wish'
+  });
 })
 
-Router.use('/api', registryRouter)
+Router.use('/api/wishes', listRouter)
 
 export default Router;

@@ -1,0 +1,21 @@
+const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+if(process.env.NODE_ENV != 'production'){
+  require('@babel/register');
+  module.exports = {
+    "config": path.resolve("./src/database", "config.js"),
+    "models-path": path.resolve("./src/models"),
+    "migrations-path": path.resolve("./src/database/migrations"),
+    "seeders-path": path.resolve("./src/database/seeders")
+  }
+}else {
+  module.exports = {
+    "config": path.resolve("./dist/database", "config.js"),
+    "models-path": path.resolve("./dist/models"),
+    "migrations-path": path.resolve("./dist/database/migrations"),
+    "seeders-path": path.resolve("./dist/database/seeders")
+  }
+}
