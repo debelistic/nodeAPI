@@ -1,0 +1,10 @@
+const http = require('http');
+const config = require('dotenv').config;
+const app = require('../../dist/index.js').default;
+const server = http.createServer(app);
+
+config();
+
+const port = parseInt(process.env.PORT, 10);
+
+server.listen(port, () => console.log('Listening on port', port));
